@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, X, Menu, Play, Star } from 'lucide-react';
+import Link from "next/link";
 import './globals.css';
 
 
@@ -111,13 +112,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Progress Bar */}
-      <div 
+      <div
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500 z-50 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
-
-      {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-40 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -126,8 +124,6 @@ export default function HomePage() {
             </div>
             <span className="text-xl font-bold text-gray-900">LearnAI</span>
           </div>
-
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium transition">Features</a>
             <a href="#lessons" className="text-gray-600 hover:text-gray-900 font-medium transition">Lessons</a>
@@ -137,8 +133,7 @@ export default function HomePage() {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-gray-900"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -146,7 +141,6 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 py-4 px-4">
             <a href="#features" className="block py-2 text-gray-600 hover:text-gray-900">Features</a>
@@ -158,8 +152,6 @@ export default function HomePage() {
           </div>
         )}
       </nav>
-
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -193,7 +185,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="bg-gradient-to-r from-red-50 via-yellow-50 to-green-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -213,8 +204,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Features Section */}
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -224,48 +213,30 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                icon: '🤖',
-                title: 'AI & ML Lessons',
-                description: 'Learn cutting-edge artificial intelligence from industry experts',
-              },
-              {
-                icon: '📹',
-                title: 'Video Tutorials',
-                description: 'High-quality video content with real-world examples',
-              },
-              {
-                icon: '📄',
-                title: 'Downloadable PDFs',
-                description: 'Comprehensive guides and resources to download',
-              },
-              {
-                icon: '📚',
-                title: 'Learning Modules',
-                description: 'Structured curriculum designed for progressive learning',
-              },
-              {
-                icon: '💻',
-                title: 'Mini Projects',
-                description: 'Build portfolio-worthy projects with hands-on experience',
-              },
-              {
-                icon: '👩‍💼',
-                title: 'Success Stories',
-                description: 'Get inspired by real stories from women in tech',
-              },
+              { icon: '🤖', title: 'AI & ML Lessons', description: 'Learn cutting-edge artificial intelligence from industry experts' },
+              { icon: '📹', title: 'Video Tutorials', description: 'High-quality video content with real-world examples', href: "/videos" },
+              { icon: '📄', title: 'Downloadable PDFs', description: 'Comprehensive guides and resources to download' },
+              { icon: '📚', title: 'Learning Modules', description: 'Structured curriculum designed for progressive learning' },
+              { icon: '💻', title: 'Mini Projects', description: 'Build portfolio-worthy projects with hands-on experience' },
+              { icon: '👩‍💼', title: 'Success Stories', description: 'Get inspired by real stories from women in tech' },
             ].map((feature, idx) => (
-              <div key={idx} className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-red-300 transition hover:shadow-xl">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition transform">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
+              <Link
+                key={idx}
+                href={feature.href || "#"}
+                className="group block"
+              >
+                <div className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-red-300 transition hover:shadow-xl cursor-pointer">
+                  <div className="text-5xl mb-4 group-hover:scale-110 transition transform">{feature.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* Lessons Section */}
       <section id="lessons" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-blue-50 to-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -275,13 +246,12 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {lessons.map((lesson, idx) => (
-              <div 
+              <div
                 key={idx}
-                className={`rounded-2xl p-8 text-white cursor-pointer transition transform hover:scale-105 ${
-                  activeLesson === idx 
-                    ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-2xl' 
+                className={`rounded-2xl p-8 text-white cursor-pointer transition transform hover:scale-105 ${activeLesson === idx
+                    ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-2xl'
                     : 'bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700'
-                }`}
+                  }`}
                 onClick={() => setActiveLesson(idx)}
               >
                 <div className="text-4xl mb-4">{lesson.icon}</div>
@@ -300,7 +270,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mini Projects Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -334,7 +303,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stories Section */}
       <section id="stories" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-50 to-pink-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -364,7 +332,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-3xl p-12 md:p-16 text-white text-center">
@@ -383,8 +350,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
