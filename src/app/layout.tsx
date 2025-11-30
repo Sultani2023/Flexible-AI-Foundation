@@ -1,43 +1,24 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
+// app/layout.tsx
+import './globals.css';
+import React from 'react';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+export const metadata = {
+  title: 'LearnFlexAI',
+  description: 'Empowering women in technology',
+};
 
-export const metadata: Metadata = {
-  title: 'LearnHub - Empower Your Tech Career',
-  description: 'Learn AI, data science, and web development from industry experts. Join thousands of women building amazing careers in tech.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
+      <body className="font-sans antialiased">
+        <ScrollProgressBar />
+        <Navbar />
+        <main className="pt-24">{children}</main>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }
