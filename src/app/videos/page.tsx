@@ -66,11 +66,11 @@ export default function VideosPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-yellow-50 to-green-50 pt-32 pb-20 px-6">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 via-orange-50 to-yellow-50  pt-32 pb-20 px-6">
 
       {/* ------------ HEADER SECTION -------------- */}
       <div className="max-w-5xl mx-auto text-center mb-14">
-        <div className="inline-flex items-center gap-3 bg-yellow-100 px-4 py-2 rounded-full mb-6">
+        <div className="inline-flex items-center gap-3 bg-gradient-to-b from-red-50 via-orange-50 to-yellow-50  px-4 py-2 rounded-full mb-6">
           <span className="text-2xl">📹</span>
           <span className="text-sm font-semibold text-yellow-900">Premium Video Tutorials</span>
         </div>

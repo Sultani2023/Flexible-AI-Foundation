@@ -192,6 +192,7 @@ export default function HomePage() {
                 icon: '📹',
                 title: 'Video Tutorials',
                 description: 'High-quality video content with real-world examples',
+                href: '/videos',
               },
               {
                 icon: '📄',
