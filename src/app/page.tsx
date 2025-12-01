@@ -33,7 +33,9 @@ export default function HomePage() {
       duration: '45 min',
       level: 'Beginner',
       description: 'Learn the basics of artificial intelligence and machine learning',
-      icon: '🤖'
+      icon: '🤖',
+      href: '/feature/ai-fundamental',
+
     },
     {
       id: 2,
@@ -41,7 +43,8 @@ export default function HomePage() {
       duration: '60 min',
       level: 'Intermediate',
       description: 'Master data analysis and visualization techniques',
-      icon: '📊'
+      icon: '📊',
+      href: '/feature/data-science',
     },
     {
       id: 3,
@@ -49,7 +52,9 @@ export default function HomePage() {
       duration: '90 min',
       level: 'Advanced',
       description: 'Build scalable web applications with modern frameworks',
-      icon: '💻'
+      icon: '💻',
+      href: '/feature/web-development',
+
     },
     {
       id: 4,
@@ -57,7 +62,9 @@ export default function HomePage() {
       duration: '75 min',
       level: 'Intermediate',
       description: 'Deploy and manage applications in the cloud',
-      icon: '☁️'
+      icon: '☁️',
+      href: '/feature/cloud-computing',
+
     },
   ];
 
@@ -91,9 +98,9 @@ export default function HomePage() {
   const testimonials = [
     {
       name: 'Mahfoza Sultani',
-      role: 'Software Engineer',
+      role: 'Project Lead',
       image: '👩‍💼',
-      text: 'This platform completely transformed my career. The practical projects helped me land my dream job!',
+      text: 'Mahfoza built a full-stack web app and explored AI/STEM projects. Her creativity and determination inspire others to dive into tech!',
       rating: 5
     },
     {
@@ -104,10 +111,10 @@ export default function HomePage() {
       rating: 5
     },
     {
-      name: 'Tasheen',
+      name: 'Tasheen Kabir',
       role: 'Product Manager',
       image: '👩‍💼',
-      text: 'The mini projects are incredibly well-designed. I could apply everything immediately at work.',
+      text: 'The fellowship transformed my tech journey, helping me master AI basics, build my first project, grow confidence in coding, and inspire my future in innovation.',
       rating: 5
     },
   ];
@@ -143,12 +150,15 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
-            <div className="relative h-96 md:h-full">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-200 via-yellow-100 to-green-200 rounded-3xl blur-3xl opacity-30" />
-              <div className="relative bg-gradient-to-br from-red-400 to-orange-500 rounded-3xl h-80 md:h-96 flex items-center justify-center text-6xl shadow-2xl">
-                👩‍💻
-              </div>
+            <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/image3.png"
+                alt="Hero illustration"
+                fill
+                className="object-cover"
+              />
             </div>
+
           </div>
         </div>
       </section>
@@ -198,6 +208,7 @@ export default function HomePage() {
                 icon: '📄',
                 title: 'Downloadable PDFs',
                 description: 'Comprehensive guides and resources to download',
+                href: '/pdf-files'
               },
 
               {
@@ -240,30 +251,43 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {lessons.map((lesson, idx) => (
-              <div
-                key={idx}
-                className={`rounded-2xl p-8 text-white cursor-pointer transition transform hover:scale-105 ${activeLesson === idx
-                  ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-2xl'
-                  : 'bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700'
-                  }`}
-                onClick={() => setActiveLesson(idx)}
-              >
-                <div className="text-4xl mb-4">{lesson.icon}</div>
-                <h3 className="text-2xl font-bold mb-2">{lesson.title}</h3>
-                <p className="text-sm opacity-90 mb-4">{lesson.description}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-white/20">
-                  <div className="flex gap-4">
-                    <span className="text-sm font-semibold">{lesson.duration}</span>
-                    <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold">{lesson.level}</span>
+            {lessons.map((lesson, idx) => {
+              const CardContent = (
+                <div
+                  className={`rounded-2xl p-8 text-white cursor-pointer transition transform hover:scale-105 ${activeLesson === idx
+                      ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-2xl'
+                      : 'bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700'
+                    }`}
+                  onClick={() => setActiveLesson(idx)}
+                >
+                  <div className="text-4xl mb-4">{lesson.icon}</div>
+                  <h3 className="text-2xl font-bold mb-2">{lesson.title}</h3>
+                  <p className="text-sm opacity-90 mb-4">{lesson.description}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-white/20">
+                    <div className="flex gap-4">
+                      <span className="text-sm font-semibold">{lesson.duration}</span>
+                      <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold">
+                        {lesson.level}
+                      </span>
+                    </div>
+                    <Play size={20} />
                   </div>
-                  <Play size={20} />
                 </div>
-              </div>
-            ))}
+              );
+
+              // Wrap in <Link> only when lesson.href exists
+              return lesson.href ? (
+                <Link key={idx} href={lesson.href} className="block">
+                  {CardContent}
+                </Link>
+              ) : (
+                <div key={idx}>{CardContent}</div>
+              );
+            })}
           </div>
         </div>
       </section>
+
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -277,10 +301,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {miniProjects.map((project) => {
-              // Assign links based on project ID
-              let link = "/chatbot"; // default for Project 1
-              if (project.id === 2) link = "/createdash";
-              if (project.id === 3) link = "/trainmodel";
+              let link = "/chatbot";
+              if (project.id === 2) link = "/dashboard";
+              if (project.id === 3) link = "/train-model";
 
               return (
                 <div
@@ -293,7 +316,7 @@ export default function HomePage() {
                   >
                     {/* Icon in the corner */}
                     <div className="absolute top-4 left-4 text-white opacity-90">
-        
+
                     </div>
 
                     <div className="absolute inset-0 opacity-20 group-hover:scale-110 transition transform" />

@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-export default function MLModelTrainingPage() {
-  const [modules, setModules] = useState([
-    { id: 1, name: 'Data Preprocessing', value: 'Clean and prepare datasets' },
-    { id: 2, name: 'Model Selection', value: 'Choose the right ML algorithm' },
-    { id: 3, name: 'Training & Evaluation', value: 'Train models and measure performance' },
-    { id: 4, name: 'Deployment', value: 'Deploy models in production' },
+export default function MiniProjectDashboardPage() {
+  const [widgets, setWidgets] = useState([
+    { id: 1, name: 'Sales', value: '$12,450' },
+    { id: 2, name: 'Users', value: '1,245' },
+    { id: 3, name: 'Revenue', value: '$8,300' },
+    { id: 4, name: 'Orders', value: '320' },
   ]);
 
   return (
@@ -32,20 +32,19 @@ export default function MLModelTrainingPage() {
         ------------------------------------------------------ */}
         <section>
           <h1 className="text-3xl font-bold text-orange-700 mb-4">
-            ML Model Training 📊
+            Mini Project: Build a Dashboard 📊
           </h1>
 
           <p className="text-gray-700 mb-6">
-            Learn how to train machine learning models from scratch using Python and popular AI libraries like TensorFlow, PyTorch, and Scikit-learn. 
-            This project guides you through data preprocessing, model selection, training, evaluation, and deployment.
+            Learn how to create an interactive dashboard using React. This project teaches data display, card components, and responsive design.
           </p>
 
-          <h2 className="text-xl font-semibold text-orange-600 mb-2">📺 Watch: ML Model Training Tutorial</h2>
+          <h2 className="text-xl font-semibold text-orange-600 mb-2">📺 Watch: Build a Dashboard</h2>
           <div className="w-full h-0 pb-[56.25%] relative rounded-xl overflow-hidden shadow-lg mb-6">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/aircAruvnKk"
-              title="ML Model Training Tutorial"
+              src="https://www.youtube.com/embed/VIFyXj31iYE"
+              title="Build a React Dashboard"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
@@ -53,22 +52,20 @@ export default function MLModelTrainingPage() {
 
           <h2 className="text-xl font-semibold text-orange-600 mb-2">📌 What You Will Learn</h2>
           <ul className="list-disc ml-6 text-gray-700 space-y-1">
-            <li>Data preprocessing and feature engineering</li>
-            <li>Selecting the right machine learning model</li>
-            <li>Training and evaluating models</li>
-            <li>Hyperparameter tuning and optimization</li>
-            <li>Deploying ML models in production</li>
+            <li>How to structure a React dashboard</li>
+            <li>How to create reusable card components</li>
+            <li>How to display dynamic data in widgets</li>
+            <li>Basic styling using Tailwind CSS</li>
           </ul>
 
           <h2 className="text-xl font-semibold text-orange-600 mt-6 mb-2">🛠 Tools Used</h2>
           <ul className="list-disc ml-6 text-gray-700 space-y-1">
-            <li>Python</li>
-            <li>TensorFlow / PyTorch / Scikit-learn</li>
-            <li>Pandas & NumPy for data manipulation</li>
-            <li>Matplotlib / Seaborn for visualization</li>
+            <li>React (Next.js)</li>
+            <li>useState for managing widget data</li>
+            <li>Tailwind CSS for styling</li>
           </ul>
 
-          <a href="#ml-demo">
+          <a href="#dashboard-demo">
             <button className="mt-6 bg-gradient-to-r from-orange-500 to-red-500 hover:opacity-90 text-white px-6 py-3 rounded-xl shadow-md">
               Start Project 🚀
             </button>
@@ -78,27 +75,27 @@ export default function MLModelTrainingPage() {
         <hr className="border-orange-300" />
 
         {/* ---------------------------------------------------
-           PART 2 — MODULE DEMO
+           PART 2 — DASHBOARD DEMO
         ------------------------------------------------------ */}
-        <section id="ml-demo">
+        <section id="dashboard-demo">
           <h2 className="text-2xl font-bold text-orange-700 mb-4">
-            🔥 ML Training Modules
+            🔥 Dashboard Demo
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {modules.map(module => (
+            {widgets.map(widget => (
               <div
-                key={module.id}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl p-6 shadow-md flex flex-col justify-center items-start"
+                key={widget.id}
+                className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl p-6 shadow-md flex flex-col justify-center items-center"
               >
-                <h3 className="text-lg font-semibold mb-2">{module.name}</h3>
-                <p className="text-white/90">{module.value}</p>
+                <h3 className="text-lg font-semibold mb-2">{widget.name}</h3>
+                <p className="text-2xl font-bold">{widget.value}</p>
               </div>
             ))}
           </div>
 
           <p className="mt-6 text-gray-700 text-center">
-            This is an overview of ML training modules. You can expand it with datasets, hands-on exercises, and code examples for each module.
+            This is a simple dashboard demo. You can expand it with charts, tables, and dynamic data from APIs.
           </p>
         </section>
 

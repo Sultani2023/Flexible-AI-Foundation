@@ -10,10 +10,10 @@ export default function AIFundamentalsPage() {
       {/* BACK BUTTON */}
       <div className="max-w-5xl mx-auto mb-6">
         <Link
-          href="/modules"
+          href="/"
           className="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition"
         >
-          <ArrowLeft className="mr-2" size={20} /> Back to Modules
+          <ArrowLeft className="mr-2" size={20} /> Back 
         </Link>
       </div>
 
@@ -84,15 +84,20 @@ export default function AIFundamentalsPage() {
       </div>
 
       {/* BOTTOM BUTTON */}
-      <div className="max-w-4xl mx-auto text-center mt-20">
-        <Link
-          href="/modules"
-          className="inline-block px-10 py-4 bg-gradient-to-r from-red-500 to-orange-500 
-            text-white font-bold rounded-full shadow-md hover:shadow-xl 
-            hover:scale-105 transition"
-        >
-          Back to Modules
-        </Link>
+      <div className="max-w-3xl mx-auto mt-24 text-center">
+        <div className="bg-gradient-to-r from-red-500 to-orange-500 p-10 rounded-3xl shadow-xl text-white">
+          <h2 className="text-3xl font-extrabold mb-3">Need More Resources?</h2>
+          <p className="text-lg opacity-90 mb-6">
+            Keep learning and exploring the world of AI and technology!
+          </p>
+
+          <Link
+            href="/"
+            className="px-8 py-4 bg-white text-red-600 font-bold rounded-full shadow-md hover:shadow-xl transition transform hover:scale-105"
+          >
+            ← Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   );
