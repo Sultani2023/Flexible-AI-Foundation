@@ -27,7 +27,7 @@ export default function SuccessStoriesPage() {
             rating: 5,
         },
         {
-            name: 'Mahfoza Sultani',
+            name: 'Mahfoza Sultani iiii',
             role: 'Full-Stack Web Developer & AI & STEM Enthusiast',
             icon: <Code size={48} className="text-blue-500" />,
             story: "Mahfoza built a full-stack web app and explored AI/STEM projects. Her creativity and determination inspire others to dive into tech!"
